@@ -17,7 +17,7 @@ services:
       - REDMINE_DB_USERNAME=bn_redmine
       - REDMINE_DB_NAME=bitnami_redmine
       - REDMINE_USERNAME=admin
-      - REDMINE_PASSWORD=Password2
+      - REDMINE_PASSWORD=<password>
       - REDMINE_LANGUAGE=ru
       - REDMINE_EMAIL=edosmtpiba@gmail.com
       - SMTP_HOST=smtp.gmail.com
