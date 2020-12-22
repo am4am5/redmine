@@ -1,0 +1,30 @@
+version: '2'
+services:
+  postgresql:
+    image: 'bitnami/postgresql:13'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=bn_redmine
+      - POSTGRESQL_DATABASE=bitnami_redmine
+    volumes:
+      - '/root/postgres:/bitnami/postgresql'
+  redmine:
+    image: 'bitnami/redmine:4'
+    ports:
+      - '80:3000'
+    environment:
+      - REDMINE_DB_POSTGRES=postgresql
+      - REDMINE_DB_USERNAME=bn_redmine
+      - REDMINE_DB_NAME=bitnami_redmine
+      - REDMINE_USERNAME=admin
+      - REDMINE_PASSWORD=Password2
+      - REDMINE_LANGUAGE=ru
+      - REDMINE_EMAIL=edosmtpiba@gmail.com
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=edosmtpiba@gmail.com
+      - SMTP_PASSWORD=<password>
+    volumes:
+      - '/root/redmine:/bitnami'
+    depends_on:
+      - postgresql
